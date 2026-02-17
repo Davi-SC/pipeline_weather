@@ -12,12 +12,12 @@ env_path = Path(__file__).parent.parent / 'config' / '.env'
 load_dotenv(env_path)
 
 user = os.getenv('USER')
-password = os.getenv('PASSWORD')
+password = quote_plus(os.getenv('PASSWORD'))
 database = os.getenv('DATABASE')
 host = os.getenv('HOST')
 
 def get_engine():
-    return create_engine(f"postgresql_psycopg2://{user}:{quote_plus(password)}@{host}:5432/{database}")
+    return create_engine(f"postgresql+psycopg2://{user}:{password}@{host}:5432/{database}")
 
 engine = get_engine()
 

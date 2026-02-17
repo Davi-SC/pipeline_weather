@@ -6,7 +6,7 @@ import logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 path_name = Path(__file__).parent.parent / 'data' / 'weather_data.json'
-columns_name_to_drop = ['weather','weather_icon','sys.type']
+columns_name_to_drop = ['weather','weather_icon']
 columns_names_to_rename = {
         "base": "base",
         "visibility": "visibility",
@@ -29,7 +29,7 @@ columns_names_to_rename = {
         "wind.deg": "wind_deg",
         "wind.gust": "wind_gust",
         "clouds.all": "clouds", 
-        "sys.type": "sys_type",                 
+        # "sys.type": "sys_type",                 
         "sys.id": "sys_id",                
         "sys.country": "country",                
         "sys.sunrise": "sunrise",                
