@@ -6,4 +6,12 @@ def extract_weather_data(url:str) -> list:
     response = requests.get(url)
     data = response.json()
 
-    
+    output_path = 'data/weather_data.json'
+    output_dir = Path(output_path).parent
+    output_dir.mkdir(parents=True,exist_ok=True)
+
+    with open(output_path,'w') as f :
+        json.dump(data, f, indent=4)
+
+    return data
+
