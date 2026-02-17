@@ -1,7 +1,10 @@
 import requests
 import json
 from pathlib import Path
+
 import logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
 
 def extract_weather_data(url:str) -> list:
     response = requests.get(url)
