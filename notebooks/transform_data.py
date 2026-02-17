@@ -21,3 +21,18 @@ def create_dataframe(path_name:str) -> pd.DataFrame:
     logging.info(f"\n Dataframe criado com {df.shape[0]} linhas e {df.shape[1]} colunas")
 
     return df
+
+def normalize_weather_columns(df: pd.DataFrame) -> pd.DataFrame:
+    df_weather = pd.json_normalize(df['weather'].apply(lambda x: x[0]))
+
+    df_weather = df_weather.rename(columns={
+        'id': 'weather_id',
+        'main': 'weather_main',
+        'description': 'weather_description',
+        'icon': 'weather_icon',})
+    
+    df = pd.concat([df, df_weather], axis=1)
+    logging.info(f"\n Coluna Weather normalizada")
+    return df
+
+def
